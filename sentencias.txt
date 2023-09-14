@@ -1,0 +1,77 @@
+-crear la base de datos-
+create database cerveceria;
+
+-usar la base de datos- 
+use cerveceria,
+
+-crear tabla categoria
+
+create table categoria(
+id_categoria INT NOT NULL auto_increment,
+nombre varchar(50) NOT NULL,
+detalle varchar(50) NOT NULL,
+PRIMARY KEY(id_categoria)
+);
+
+-crear tabla cerveza
+
+create table cerveza(
+id_cerveza INT PRIMARY KEY NOT NULL auto_increment,
+id_categoria INT, 
+nombre varchar(50) NOT NULL,
+detalle varchar(60) NOT NULL,
+FOREIGN KEY(id_categoria) references categoria (id_categoria)
+);
+
+-crear tabla materia_prima
+
+create table materia_prima(
+id_materia_prima INT NOT NULL auto_increment,
+nombre varchar(50) NOT NULL,
+detalle varchar(50) NOT NULL,
+PRIMARY KEY(id_materia_prima)
+);
+
+-crear tabla tipo_categoria
+
+create table tipo_categoria(
+id_tipo_categoria INT NOT NULL auto_increment PRIMARY KEY,
+id_categoria INT,
+id_tipo INT,
+FOREIGN KEY(id_categoria) REFERENCES categoria(id_categoria),
+FOREIGN KEY(id_tipo) REFERENCES tipo(id_tipo)
+);
+
+
+-crear tabla cerveza_matprima
+
+create table cerveza_matprima (
+idcervezamateprima INT AUTO_INCREMENT PRIMARY KEY,
+id_cerveza INT,
+id_matprima INT,
+FOREIGN KEY (id_cerveza) REFERENCES cerveza(idcerveza),
+FOREIGN KEY (id_matprima) REFERENCES materia_prima(idmatprima)
+);
+
+
+- crear tabla tipo
+
+create table tipo(
+idtipo INT NOT NULL auto_increment PRIMARY KEY,
+nombre varchar(50) NOT NULL,
+tamaño varchar(40) NOT NULL,
+tipo de envase varchar(70) NOT NULL
+); 
+
+  
+
+
+
+
+ 
+
+
+
+
+
+
